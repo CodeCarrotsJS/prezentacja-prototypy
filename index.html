@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Obiektowość w JavaScript, cz. 1</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -50,10 +50,128 @@
 			<div class="slides">
 				<section>
 					<h1>Code Carrots</h1>
-					<h3>Zajęcia z programowania w języku JavaScript</h3>
+					<h3>Programowanie obiektowe</h3>
+					<h4>Obiekty, konstruktory, prototypy - część pierwsza</h4>
 					<p>
-						<small>Ogranizatorka zajęć: <a target="_blank" href="mailto:zuzapodwinska@gmail.com">Zuza Podwińska</a></small>
+						<small>Prowadzący: <a target="_blank" href="mailto:michal.matulka@protonmail.ch">Michał Matulka</a></small>
 					</p>
+				</section>
+				<section>
+					<h3>Czym jest obiekt w JavaScript?</h3>
+					<pre><code contenteditable="true" class="javascript">
+{
+    wlasnosc: "jakaśWłasność",
+    metoda: function () {
+        return "jestem jakąś metodą";
+    }
+}
+</code></pre>
+				</section>
+				<section>
+					<h3>Czym jest obiekt w ogóle?</h3>
+				</section>
+				<section>
+					<h3>Do czego służą obiekty?</h3>
+				</section>
+				<section>
+					<h3>Powtórzenie: słówko "this"</h3>
+					<pre><code contenteditable="true" class="javascript">
+var jakisObiekt = {
+    wlasnosc: "jakaśWłasność",
+    metoda: function () {
+        return "jestem jakąś metodą, i zwrócę sobie własność, a co: " + this.wlasnosc;
+    }
+};
+console.log(jakisObiekt.metoda());
+jakisObiekt.wlasnosc = 'zmieńmy to';
+console.log(jakisObiekt.metoda());
+</code></pre>
+				</section>
+				<section>
+					<h3>Co jest, a co nie jest obiektem w JavaScript?</h3>
+				</section>
+				<section>
+					<h3>Programowanie obiektowe - słów kilka</h3>
+					<h4>Obiekty i klasy</h4>
+				</section>
+								<section>
+					<h3>Słowo kluczowe "new"</h3>
+					<pre><code contenteditable="true" class="javascript">
+var mojaTablica = [];
+var mojaDrugaTablica = new Array();
+console.log(mojaTablica);
+console.log(mojaDrugaTablica);
+//to samo xD
+</code></pre>
+				</section>
+				<section>
+					<h3>Konstruktory w JavaScript</h3>
+					<pre><code contenteditable="true" class="javascript">
+function Piesek() {
+}
+
+var mojPiesek = new Piesek();
+console.log(mojPiesek);
+</code></pre>
+				</section>
+				<section>
+					<h3>"this" w kontekście konstruktora</h3>
+					<pre><code contenteditable="true" class="javascript">
+function Piesek(imie) {
+    this.imie = imie;
+}
+
+var mojPiesek = new Piesek("Azor");
+console.log(mojPiesek.imie);
+</code></pre>
+				</section>
+				<section>
+					<h3>Własności obiektów a własności konstruktorów</h3>
+					<pre><code contenteditable="true" class="javascript">
+function Piesek(imie) {
+    this.imie = imie;
+}
+
+Piesek.rasa = "kundelek";
+
+var mojPiesek = new Piesek("Azor");
+console.log(mojPiesek.imie);
+console.log(mojPiesek.rasa);
+</code></pre>
+				</section>
+				<section>
+					<h3>Zadanie 1</h3>
+					<ol>
+						<li>Stwórz nowy konstruktor "User", którego argumentami będą adres e-mail, hasło oraz adres url awatara</li>
+						<li>Stwórz obiekt userList, który będzie posiadał metodę "addUser", przyjmującą jako argument instancję User i zapamiętującą ją w obiekcie, oraz metodę "login" z argumentami "email" oraz "password", zwracającą true w przypadku podania prawidłowych danych dla któregoś z użytkowników, oraz "false" w przypadku podania nieprawidłowych danych.</li>
+						<li>Stwórz prosty formularz, zawierający pola "login" oraz "hasło", który wyświetli komunikat z informacją, czy udało się zalogować.</li>
+				</section>
+				<section>
+					<h3>Prototyp</h3>
+					<pre><code contenteditable="true" class="javascript">
+console.log(Piesek.prototype);
+</code></pre>
+				</section>
+				<section>
+					<h3>Własności w prototypach</h3>
+					<pre><code contenteditable="true" class="javascript">
+Piesek.prototype.rasa = 'kundelek';
+console.log(mojPiesek.rasa);
+</code></pre>
+				</section>
+				<section>
+					<h3>Dlaczego metody w prototypach?</h3>
+				</section>
+				<section>
+					<h3>Czym jest obiekt w JavaScript?</h3>
+					<ol>
+						<li>Stwórz nowy konstruktor "UserView", którego argumentem będzie instancja User</li>
+						<li>W konstruktorze UserView wygeneruj element li, zawierający obrazek z awatarem użytkownika, oraz jego adres e-mail umieszczony jako link z protokołem "mailto:" (nadaj tym elementom jakieś ładne style :) ). Przypisz element dom oraz obiekt User jako własności tworzonego obiektu.</li>
+						<li>W prototypie UserView utwórz metodę refresh odświeżającą dane użytkownika w elemencie dom.</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Właśnie utworzyliśmy namiastkę wzorca MVVM :)</h3>
 				</section>
 			</div>
 
